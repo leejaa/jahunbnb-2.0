@@ -24,7 +24,7 @@ const Header: FunctionComponent<Props> = (props) => {
       css={css`
         grid-area: header;
         background-color: ${colorInvert ? 'white' : 'black'};
-        padding: 1rem;
+        padding: 1rem 5rem 1rem 5rem;
 
         color: ${colorInvert ? 'black' : 'white'};
         font-weight: 600;
@@ -75,7 +75,12 @@ const Header: FunctionComponent<Props> = (props) => {
             display: flex;
           `}
         >
-          <BaseButton colorInvert={colorInvert}>호스트 되기</BaseButton>
+          <BaseButton
+            colorInvert={colorInvert}
+            textColor={colorInvert ? 'black' : 'white'}
+          >
+            호스트 되기
+          </BaseButton>
           <IconButton
             color="inherit"
             sx={{
