@@ -1,14 +1,16 @@
 import React, { useCallback, useState } from 'react';
 import type { NextPage } from 'next';
 import { css } from '@emotion/react';
-import LanguageIcon from '@mui/icons-material/Language';
-import { Button, IconButton } from '@mui/material';
-import { BaseButton, IconMessageButton } from '../components/Button';
-import mediaQuery from '../styles/mediaQuery';
-import { AirbnbLogo } from '../components/Icon';
-import { Tabs } from '../components/Tabs';
+import { AppBar, Button, IconButton, useScrollTrigger } from '@mui/material';
+import { Header } from 'components/Header';
+import { v4 as uuidv4 } from 'uuid';
 
 const Home: NextPage = () => {
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 0,
+  });
+
   return (
     <div
       css={css`
@@ -20,69 +22,12 @@ const Home: NextPage = () => {
           'footer';
       `}
     >
-      <header
-        css={css`
-          grid-area: header;
-          background-color: black;
-          padding: 1rem;
-
-          color: white;
-          font-weight: 600;
-          font-size: 1rem;
-
-          & > div {
-            align-items: center;
-          }
-        `}
-      >
-        <div
-          css={css`
-            ${mediaQuery.sm} {
-              display: none;
-            }
-          `}
-        >
-          <IconMessageButton>어디로 여행가세요?</IconMessageButton>
-        </div>
-        <div
-          css={css`
-            display: none;
-            ${mediaQuery.sm} {
-              display: flex;
-            }
-          `}
-        >
-          <a css={css``}>
-            <AirbnbLogo />
-          </a>
-          <div
-            css={css`
-              flex-grow: 1;
-              display: flex;
-              justify-content: center;
-            `}
-          >
-            <Tabs />
-          </div>
-          <div
-            css={css`
-              display: flex;
-            `}
-          >
-            <BaseButton>호스트 되기</BaseButton>
-            <IconButton
-              color="inherit"
-              sx={{
-                '&:hover': {
-                  backgroundColor: '#262626',
-                },
-              }}
-            >
-              <LanguageIcon fontSize="small" />
-            </IconButton>
-          </div>
-        </div>
-      </header>
+      <AppBar position="sticky">
+        <Header colorInvert={trigger} />
+      </AppBar>
+      {Array.from({ length: 50 }).map((item, index) => (
+        <br key={uuidv4()} />
+      ))}
       <section
         css={css`
           grid-area: section1;

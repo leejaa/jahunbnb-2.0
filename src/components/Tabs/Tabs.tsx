@@ -3,9 +3,12 @@ import React, { FunctionComponent, useCallback, useState } from 'react';
 import TabsComponent from '@mui/material/Tabs';
 import TabComponent from '@mui/material/Tab';
 
-interface TabsProps {}
+interface TabsProps {
+  colorInvert: boolean;
+}
 
-const Tabs: FunctionComponent<TabsProps> = () => {
+const Tabs: FunctionComponent<TabsProps> = (props) => {
+  const { colorInvert } = props;
   const [tabIndex, setTabIndex] = useState(0);
   const handleChangeTab = useCallback(
     (event: React.SyntheticEvent, newValue: number) => {
@@ -20,13 +23,17 @@ const Tabs: FunctionComponent<TabsProps> = () => {
       aria-label="main tabs"
       sx={{
         '& .MuiTab-textColorPrimary': {
-          color: 'white',
+          color: colorInvert ? 'black' : 'white',
+          fontWeight: 700,
         },
         '& .MuiTab-root.Mui-selected': {
-          color: 'white',
+          color: colorInvert ? 'black' : 'white',
+          fontWeight: 900,
         },
         '& .MuiTabs-indicator': {
-          backgroundColor: 'white',
+          backgroundColor: colorInvert ? 'black' : 'white',
+          maxWidth: 30,
+          marginLeft: '30px',
         },
       }}
     >
