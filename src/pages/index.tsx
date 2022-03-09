@@ -6,6 +6,7 @@ import { Header } from 'components/Header';
 import { v4 as uuidv4 } from 'uuid';
 import mediaQuery from 'styles/mediaQuery';
 import { BaseButton } from 'components/Button';
+import { Carousel } from 'components/Carousel';
 
 const Home: NextPage = () => {
   const trigger = useScrollTrigger({
@@ -22,6 +23,13 @@ const Home: NextPage = () => {
           'header'
           'section1'
           'footer';
+        h1 {
+          font-size: 25px;
+          font-weight: 600;
+          ${mediaQuery.sm} {
+            font-size: 42px;
+          }
+        }
       `}
     >
       <AppBar position="sticky">
@@ -33,7 +41,7 @@ const Home: NextPage = () => {
           width: 100%;
           margin: auto;
           ${mediaQuery.sm} {
-            max-width: calc(100% - 10rem);
+            max-width: calc(100% - 6rem);
           }
         `}
       >
@@ -82,11 +90,33 @@ const Home: NextPage = () => {
                 css={css`
                   margin: auto;
                   margin-top: 16px;
+                  padding: 14px 32px;
+                  font-size: 18px;
+                  font-weight: 700;
+                  color: #6f019c;
                 `}
               >
                 유연한 검색
               </BaseButton>
             </div>
+          </div>
+        </section>
+        <section
+          css={css`
+            margin-top: 48px;
+          `}
+        >
+          <h1>설레는 다음 여행을 위한 아이디어</h1>
+          <div
+            css={css`
+              max-width: 100vw;
+              border: 1px solid black;
+              ${mediaQuery.sm} {
+                display: none;
+              }
+            `}
+          >
+            <Carousel />
           </div>
         </section>
       </main>

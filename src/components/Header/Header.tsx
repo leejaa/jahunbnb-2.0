@@ -24,7 +24,7 @@ const Header: FunctionComponent<Props> = (props) => {
       css={css`
         grid-area: header;
         background-color: ${colorInvert ? 'white' : 'black'};
-        padding: 1rem 5rem 1rem 5rem;
+        padding: 1rem 4%;
 
         color: ${colorInvert ? 'black' : 'white'};
         font-weight: 600;
